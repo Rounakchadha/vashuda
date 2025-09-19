@@ -1,0 +1,7 @@
+/* Custom styles for prose content */
+.prose {
+  /* Example: customize link colors */
+  a {
+    @apply text-accent-green hover:underline;
+  }
+}
