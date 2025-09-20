@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.vashudevan.com
+
+# Sitemaps
+Sitemap: https://www.vashudevan.com/sitemap.xml
