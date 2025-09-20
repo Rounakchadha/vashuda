@@ -1,7 +1,7 @@
 'use client';
 
 import { useFormState, useFormStatus } from 'react-dom';
-import { handleContactForm } from '@/app/api/contact/route';
+import { handleContactForm } from '@/lib/actions';
 import { contactFormSchema, ContactFormState } from '@/lib/validations';
 import { Button } from './buttons';
 import { Input, TextArea } from './inputs';
