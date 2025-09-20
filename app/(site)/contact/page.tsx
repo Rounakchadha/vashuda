@@ -12,27 +12,23 @@ const breadcrumbItems = [
   { name: 'Contact Us', href: '/contact' },
 ];
 
-export const metadata: Metadata = {
-  ...generateSeoMetadata({
-    title: 'Contact Us | Vashudevan Met Global LLP',
-    description: `Get in touch with Vashudevan Met Global LLP. Find our address, phone number, email, and office hours. We are located at ${BUSINESS_INFO.address}.`,
-    pathname: '/contact',
-  }),
-  scripts: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)),
-    },
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLdObjects.localBusiness),
-    },
-  ],
-};
+export const metadata: Metadata = generateSeoMetadata({
+  title: 'Contact Us | Vashudevan Met Global LLP',
+  description: `Get in touch with Vashudevan Met Global LLP. Find our address, phone number, email, and office hours. We are located at ${BUSINESS_INFO.address}.`,
+  pathname: '/contact',
+});
 
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.localBusiness) }}
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-dark to-gray-900 text-white">
         <div className="absolute inset-0 bg-black/20" />
@@ -187,4 +183,3 @@ export default function ContactPage() {
     </>
   );
 }
- 

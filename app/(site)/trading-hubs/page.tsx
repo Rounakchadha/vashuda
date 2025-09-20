@@ -10,23 +10,19 @@ const breadcrumbItems = [
   { name: 'Trading Hubs', href: '/trading-hubs' },
 ];
 
-export const metadata: Metadata = {
-  ...generateSeoMetadata({
-    title: 'Trading Hubs',
-    description: 'Our global network of trading hubs spans across the Americas, Europe, Asia, Africa, and the Middle East.',
-    pathname: '/trading-hubs',
-  }),
-  scripts: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)),
-    },
-  ],
-};
+export const metadata: Metadata = generateSeoMetadata({
+  title: 'Trading Hubs',
+  description: 'Our global network of trading hubs spans across the Americas, Europe, Asia, Africa, and the Middle East.',
+  pathname: '/trading-hubs',
+});
 
 export default function TradingHubsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)) }}
+      />
       <Section className="bg-primary-dark">
         <Container>
           <Breadcrumbs items={breadcrumbItems} />

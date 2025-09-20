@@ -10,23 +10,19 @@ const breadcrumbItems = [
   { name: 'About Us', href: '/about' },
 ];
 
-export const metadata: Metadata = {
-  ...generateSeoMetadata({
-    title: 'About Us | Vashudevan Met Global LLP',
-    description: 'Learn about the history, mission, and values of Vashudevan Met Global LLP, a leading name in the global metal scrap trade.',
-    pathname: '/about',
-  }),
-  scripts: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)),
-    },
-  ],
-};
+export const metadata: Metadata = generateSeoMetadata({
+  title: 'About Us | Vashudevan Met Global LLP',
+  description: 'Learn about the history, mission, and values of Vashudevan Met Global LLP, a leading name in the global metal scrap trade.',
+  pathname: '/about',
+});
 
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)) }}
+      />
       <Section>
         <Container>
           <Breadcrumbs items={breadcrumbItems} />

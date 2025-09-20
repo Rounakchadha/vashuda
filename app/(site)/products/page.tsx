@@ -11,25 +11,21 @@ const breadcrumbItems = [
   { name: 'Products', href: '/products' },
 ];
 
-export const metadata: Metadata = {
-  ...generateSeoMetadata({
-    title: 'Our Products',
-    description: `Explore our wide range of ferrous and non-ferrous metal scrap products, including ${PRODUCTS.slice(0, 3).map(p => p.name).join(', ')}, and more.`,
-    pathname: '/products',
-  }),
-  scripts: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)),
-    },
-  ],
-};
+export const metadata: Metadata = generateSeoMetadata({
+  title: 'Our Products',
+  description: `Explore our wide range of ferrous and non-ferrous metal scrap products, including ${PRODUCTS.slice(0, 3).map(p => p.name).join(', ')}, and more.`,
+  pathname: '/products',
+});
 
 export default function ProductsPage() {
   const filteredProducts = PRODUCTS.filter(product => product.name !== 'HMS-1 & 2');
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)) }}
+      />
       <Section>
         <Container>
           <Breadcrumbs items={breadcrumbItems} />
