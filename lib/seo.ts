@@ -45,68 +45,50 @@ export function generateSeoMetadata({
   };
 }
 
-export const jsonLd = {
-  website: `
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "${BUSINESS_INFO.name}",
-        "url": "${siteUrl}"
-      }
-    </script>
-  `,
-  organization: `
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "${BUSINESS_INFO.name}",
-        "url": "${siteUrl}",
-        "logo": "${siteUrl}/images/logo.svg",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "${BUSINESS_INFO.phone}",
-          "contactType": "customer service"
-        }
-      }
-    </script>
-  `,
-  localBusiness: `
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "${BUSINESS_INFO.name}",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "OFFICE NO. 501, 5TH FLOOR, WESTERN BUSINESS PARK, VESU",
-          "addressLocality": "SURAT",
-          "addressRegion": "GUJARAT",
-          "postalCode": "395007",
-          "addressCountry": "IN"
-        },
-        "telephone": "${BUSINESS_INFO.phone}",
-        "email": "${BUSINESS_INFO.emails[0]}",
-        "url": "${siteUrl}",
-        "openingHours": "Mo-Sa 10:00-18:00"
-      }
-    </script>
-  `,
-  breadcrumb: (items: { name: string; href: string }[]) => `
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          ${items.map((item, index) => `{
-            "@type": "ListItem",
-            "position": ${index + 1},
-            "name": "${item.name}",
-            "item": "${siteUrl}${item.href}"
-          }`).join(',')}
-        ]
-      }
-    </script>
-  `,
+export const jsonLdObjects = {
+  website: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": BUSINESS_INFO.name,
+    "url": siteUrl
+  },
+  organization: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": BUSINESS_INFO.name,
+    "url": siteUrl,
+    "logo": `${siteUrl}/images/logo.svg`,
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": BUSINESS_INFO.phone,
+      "contactType": "customer service"
+    }
+  },
+  localBusiness: {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": BUSINESS_INFO.name,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "OFFICE NO. 501, 5TH FLOOR, WESTERN BUSINESS PARK, VESU",
+      "addressLocality": "SURAT",
+      "addressRegion": "GUJARAT",
+      "postalCode": "395007",
+      "addressCountry": "IN"
+    },
+    "telephone": BUSINESS_INFO.phone,
+    "email": BUSINESS_INFO.emails[0],
+    "url": siteUrl,
+    "openingHours": "Mo-Sa 10:00-18:00"
+  },
+  breadcrumb: (items: { name: string; href: string }[]) => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": `${siteUrl}${item.href}`
+    }))
+  }),
 };

@@ -3,26 +3,33 @@ import { Section } from '@/components/section';
 import { Container } from '@/components/container';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { ProductCard } from '@/components/product-card';
-import { generateSeoMetadata, jsonLd } from '@/lib/seo';
+import { generateSeoMetadata, jsonLdObjects } from '@/lib/seo';
 import { PRODUCTS } from '@/lib/constants';
-
-export const metadata: Metadata = generateSeoMetadata({
-  title: 'Our Products',
-  description: `Explore our wide range of ferrous and non-ferrous metal scrap products, including ${PRODUCTS.slice(0, 3).map(p => p.name).join(', ')}, and more.`,
-  pathname: '/products',
-});
 
 const breadcrumbItems = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
 ];
 
+export const metadata: Metadata = {
+  ...generateSeoMetadata({
+    title: 'Our Products',
+    description: `Explore our wide range of ferrous and non-ferrous metal scrap products, including ${PRODUCTS.slice(0, 3).map(p => p.name).join(', ')}, and more.`,
+    pathname: '/products',
+  }),
+  scripts: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(jsonLdObjects.breadcrumb(breadcrumbItems)),
+    },
+  ],
+};
+
 export default function ProductsPage() {
   const filteredProducts = PRODUCTS.filter(product => product.name !== 'HMS-1 & 2');
 
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: jsonLd.breadcrumb(breadcrumbItems) }} />
       <Section>
         <Container>
           <Breadcrumbs items={breadcrumbItems} />

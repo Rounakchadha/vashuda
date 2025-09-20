@@ -6,7 +6,7 @@ import '../../styles/prose.css';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { BUSINESS_INFO } from '@/lib/constants';
-import { jsonLd } from '@/lib/seo';
+import { jsonLdObjects } from '@/lib/seo';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -40,8 +40,14 @@ export default function RootLayout({
         {/* JSON-LD scripts are moved to the body to prevent hydration errors */}
       </head>
       <body className="font-body">
-        <div dangerouslySetInnerHTML={{ __html: jsonLd.website }} />
-        <div dangerouslySetInnerHTML={{ __html: jsonLd.organization }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.website) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObjects.organization) }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />

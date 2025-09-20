@@ -24,7 +24,7 @@ export function Header() {
   }, []);
 
   // Pages with a dark background at the top
-  const darkHeaderPages = ['/', '/trading-hubs', '/about'];
+  const darkHeaderPages = ['/', '/trading-hubs', '/contact'];
   const isDarkHeaderPage = darkHeaderPages.includes(pathname);
 
   return (
@@ -61,7 +61,7 @@ export function Header() {
                 pathname === link.href &&
                   (!scrolled && isDarkHeaderPage
                     ? 'text-white underline underline-offset-4'
-                    : 'text-accent-green underline underline-offset-4 decoration-primary-dark')
+                    : 'text-accent-green underline underline-offset-4 decoration-accent-green')
               )}
             >
               {link.name}

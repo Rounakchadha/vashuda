@@ -4,7 +4,7 @@ export const BUSINESS_INFO = {
   phone: '+91 9879208178',
   emails: ['exim@vashudevan.com', 'vashudevan.mg@gmail.com'],
   openingHours: '10 AM – 6 PM (Mon–Sat)',
-  mapLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.17749105531!2d72.7846383153943!3d21.1455899859355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be052b5e305f2b3%3A0x4b2b7c5ea4b8b38b!2sWestern%20Business%20Park!5e0!3m2!1sen!2sin!4v1633436963431!5m2!1sen!2sin', // Replace with actual embed link
+  mapLink: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0433135776907!2d72.7730918!3d21.150674499999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04deadeec231d%3A0xa589fff5a80ae90d!2sWestern%20Business%20Park!5e0!3m2!1sen!2sin!4v1758324180664!5m2!1sen!2sin',
 };
 
 export const NAVIGATION_LINKS = [
